@@ -1,0 +1,6 @@
+prometheus-1 ansible_host=178.128.206.80 ansible_user=root
+
+[prometheus]
+prometheus-1
+
+

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  roles:
+  - cloudalchemy.prometheus
+  vars:
+    prometheus_scrape_configs:
+      - job_name: "ex1"    # Custom scrape job, here using `static_config`
+        metrics_path: "/metrics"
+        static_configs:
+          - targets:
+              - "157.230.123.140"
