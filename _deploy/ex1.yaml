@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hsimp-deployment
+  labels:
+    app: hsimp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hsimp
+  template:
+    metadata:
+      labels:
+        app: hsimp
+    spec:
+      containers:
+      - name: hsimp
+        image: IMAGE_TAG_PLACEHOLDER
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hsimp-svc
+spec:
+  selector:
+    app: hsimp
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  externalIPs:
+  - 157.230.123.140
